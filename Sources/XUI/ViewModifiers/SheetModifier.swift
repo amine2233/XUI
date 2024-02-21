@@ -15,9 +15,10 @@ public struct SheetModifier<Model, Destination: View>: ViewModifier {
 
     // MARK: Initialization
 
-    public init(model: Binding<Model?>,
-                @ViewBuilder content: @escaping (Model) -> Destination) {
-
+    public init(
+        model: Binding<Model?>,
+        @ViewBuilder content: @escaping (Model) -> Destination
+    ) {
         self.model = model
         self.destination = content
     }
@@ -27,5 +28,4 @@ public struct SheetModifier<Model, Destination: View>: ViewModifier {
     public func body(content: Content) -> some View {
         content.sheet(model: model, content: destination)
     }
-
 }

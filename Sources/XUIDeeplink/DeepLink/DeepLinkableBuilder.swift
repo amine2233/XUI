@@ -8,7 +8,7 @@
 
 public typealias DeepLinkableBuilder = CollectionBuilder<DeepLinkable>
 
-@_functionBuilder
+@resultBuilder
 public struct CollectionBuilder<Component> {
 
     public static func buildBlock(_ components: [Component]...) -> [Component] {
@@ -62,5 +62,4 @@ public struct CollectionBuilder<Component> {
     public static func buildFinalResult(_ component: [Component]) -> [Component] {
         component
     }
-
 }

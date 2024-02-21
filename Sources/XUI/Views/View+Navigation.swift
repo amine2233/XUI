@@ -29,7 +29,6 @@ extension View {
         item: Binding<Item?>,
         @ViewBuilder destination: (Item) -> Destination
     ) -> some View {
-
         navigation(model: item, destination: destination)
     }
 
@@ -37,15 +36,7 @@ extension View {
         model: Binding<Model?>,
         @ViewBuilder destination: (Model) -> Destination
     ) -> some View {
-        let isActive = Binding(
-            get: { model.wrappedValue != nil },
-            set: { value in
-                if !value {
-                    model.wrappedValue = nil
-                }
-            }
-        )
-        return navigation(isActive: isActive) {
+        return navigation(isActive: model.isActive()) {
             model.wrappedValue.map(destination)
         }
     }
@@ -54,7 +45,6 @@ extension View {
         isActive: Binding<Bool>,
         @ViewBuilder destination: () -> Destination
     ) -> some View {
-
         overlay(
             NavigationLink(
                 destination: isActive.wrappedValue ? destination() : nil,
@@ -63,5 +53,4 @@ extension View {
             )
         )
     }
-
 }

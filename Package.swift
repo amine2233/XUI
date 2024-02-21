@@ -9,6 +9,9 @@ let package = Package(
         .library(
             name: "XUI",
             targets: ["XUI"]),
+        .library(
+            name: "XUIDeeplink",
+            targets: ["XUIDeeplink"]),
     ],
     dependencies: [
     ],
@@ -19,5 +22,11 @@ let package = Package(
         .testTarget(
             name: "XUITests",
             dependencies: ["XUI"]),
+        .target(
+            name: "XUIDeeplink",
+            dependencies: ["XUI"]),
+        .testTarget(
+            name: "XUIDeeplinkTests",
+            dependencies: ["XUIDeeplink"]),
     ]
 )

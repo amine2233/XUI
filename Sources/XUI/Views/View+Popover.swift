@@ -12,10 +12,8 @@ extension View {
         model: Binding<Model?>,
         @ViewBuilder content: @escaping (Model) -> Content
     ) -> some View {
-
         popover(item: model.objectIdentifiable()) { _ in
             model.wrappedValue.map(content)
         }
     }
-
 }

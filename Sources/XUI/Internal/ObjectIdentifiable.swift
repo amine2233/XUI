@@ -13,5 +13,4 @@ struct ObjectIdentifiable: Identifiable {
     init(_ object: Any) {
         self.id = ObjectIdentifier(object as AnyObject)
     }
-
 }

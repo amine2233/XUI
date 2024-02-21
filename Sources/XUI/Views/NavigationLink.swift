@@ -13,19 +13,10 @@ extension NavigationLink {
         @ViewBuilder destination: (Model) -> _Destination,
         @ViewBuilder label: () -> Label
     ) where Destination == _Destination? {
-        let isActive = Binding(
-            get: { model.wrappedValue != nil },
-            set: { value in
-                if !value {
-                    model.wrappedValue = nil
-                }
-            }
-        )
         self.init(
             destination: model.wrappedValue.map(destination),
-            isActive: isActive,
+            isActive: model.isActive(),
             label: label
         )
     }
-
 }

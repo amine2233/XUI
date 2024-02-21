@@ -11,7 +11,7 @@
 ///
 /// Possible use case: Storing multiple cancellables in a collection
 /// without writing `.store(in:)` for each subscription separately.
-@_functionBuilder
+@resultBuilder
 public struct CancellableBuilder {
 
     public static func buildBlock(_ components: [Cancellable]...) -> [Cancellable] {
@@ -53,7 +53,6 @@ public struct CancellableBuilder {
     public static func buildFinalResult(_ component: [Cancellable]) -> [AnyCancellable] {
         component.map { $0.eraseToAnyCancellable() }
     }
-
 }
 
 extension Cancellable {
@@ -65,7 +64,6 @@ extension Cancellable {
             return AnyCancellable(self)
         }
     }
-
 }
 
 extension RangeReplaceableCollection where Element == AnyCancellable {
@@ -75,7 +73,6 @@ extension RangeReplaceableCollection where Element == AnyCancellable {
     public mutating func insert(@CancellableBuilder _ builder: () -> [AnyCancellable]) {
         builder().forEach { $0.store(in: &self) }
     }
-
 }
 
 extension Set where Element == AnyCancellable {
@@ -85,6 +82,5 @@ extension Set where Element == AnyCancellable {
     public mutating func insert(@CancellableBuilder _ builder: () -> [AnyCancellable]) {
         builder().forEach { $0.store(in: &self) }
     }
-
 }
 

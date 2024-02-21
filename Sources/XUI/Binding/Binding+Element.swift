@@ -49,5 +49,4 @@ extension Binding where Value: RangeReplaceableCollection {
         first(where: { $0 is T })
             .force(as: T?.self)
     }
-
 }

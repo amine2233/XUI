@@ -19,6 +19,4 @@ extension Binding {
             set: { self.wrappedValue = $0 as! Value }
         )
     }
-
 }
-

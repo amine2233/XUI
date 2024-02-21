@@ -15,9 +15,10 @@ public struct NavigationModifier<Model, Destination: View>: ViewModifier {
 
     // MARK: Initialization
 
-    public init(model: Binding<Model?>,
-                @ViewBuilder destination: @escaping (Model) -> Destination) {
-
+    public init(
+        model: Binding<Model?>,
+        @ViewBuilder destination: @escaping (Model) -> Destination
+    ) {
         self.model = model
         self.destination = destination
     }
@@ -27,5 +28,4 @@ public struct NavigationModifier<Model, Destination: View>: ViewModifier {
     public func body(content: Content) -> some View {
         content.navigation(model: model, destination: destination)
     }
-
 }

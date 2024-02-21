@@ -6,4 +6,4 @@
 //  Copyright © 2021 QuickBird Studios. All rights reserved.
 //
 
-public protocol ViewModel: AnyObservableObject, DeepLinkable {}
+public protocol ViewModel: AnyObservableObject {}

@@ -8,7 +8,6 @@
 
 extension Publisher {
 
-    ///
     /// Maps the output and/or failure of a publisher to a `Result<Output, Failure>`
     /// output without completing the publisher when receiving a failure.
     ///
@@ -18,7 +17,6 @@ extension Publisher {
             .eraseToAnyPublisher()
     }
 
-    ///
     /// Maps a given `Result` output to values of the same type with separate
     /// closures for the success and failure case.
     ///
@@ -34,7 +32,6 @@ extension Publisher {
             .eraseToAnyPublisher()
     }
 
-    ///
     /// Maps a given `Result` output to values of the same type with separate
     /// closures for the success and failure case.
     ///
@@ -50,7 +47,6 @@ extension Publisher {
             .tryMap { try $0.map(success: success, failure: failure) }
             .eraseToAnyPublisher()
     }
-
 }
 
 extension Result {
@@ -66,5 +62,4 @@ extension Result {
             return try failureClosure(failure)
         }
     }
-
 }

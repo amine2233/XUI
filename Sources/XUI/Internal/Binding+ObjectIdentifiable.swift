@@ -9,7 +9,6 @@
 import SwiftUI
 
 extension Binding {
-
     func objectIdentifiable<T>() -> Binding<ObjectIdentifiable?> where Value == T? {
         .init(
             get: {
@@ -24,5 +23,4 @@ extension Binding {
             }
         )
     }
-
 }

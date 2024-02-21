@@ -74,5 +74,4 @@ extension Binding {
             set: { self.wrappedValue = map($0) }
         )
     }
-
 }

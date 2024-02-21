@@ -17,5 +17,4 @@ class ErasedObservableObject: ObservableObject {
     static func empty() -> ErasedObservableObject {
         .init(objectWillChange: Empty().eraseToAnyPublisher())
     }
-
 }

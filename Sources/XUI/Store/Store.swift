@@ -16,11 +16,14 @@ public struct Store<Model>: DynamicProperty {
 
         fileprivate var store: Store
 
-        public subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<Model, Value>) -> Binding<Value> {
-            Binding(get: { self.store.wrappedValue[keyPath: keyPath] },
-                    set: { self.store.wrappedValue[keyPath: keyPath] = $0 })
+        public subscript<Value>(
+            dynamicMember keyPath: ReferenceWritableKeyPath<Model, Value>
+        ) -> Binding<Value> {
+            Binding(
+                get: { self.store.wrappedValue[keyPath: keyPath]},
+                set: { self.store.wrappedValue[keyPath: keyPath] = $0 }
+            )
         }
-
     }
 
     // MARK: Stored properties
@@ -38,7 +41,9 @@ public struct Store<Model>: DynamicProperty {
 
     // MARK: Initialization
 
-    public init(wrappedValue: Model) {
+    public init(
+        wrappedValue: Model
+    ) {
         self.wrappedValue = wrappedValue
 
         if let objectWillChange = (wrappedValue as? AnyObservableObject)?.objectWillChange {
@@ -54,5 +59,4 @@ public struct Store<Model>: DynamicProperty {
     public mutating func update() {
         _observableObject.update()
     }
-
 }

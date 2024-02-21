@@ -16,5 +16,4 @@ extension DeepLinkable {
     public var children: [DeepLinkable] {
         get {}
     }
-
 }
